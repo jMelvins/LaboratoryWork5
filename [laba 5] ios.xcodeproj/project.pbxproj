@@ -16,7 +16,6 @@
 		A06F4BF71EE4A37A00F2E454 /* _laba_5__iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4BF61EE4A37A00F2E454 /* _laba_5__iosTests.swift */; };
 		A06F4C021EE4A37A00F2E454 /* _laba_5__iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4C011EE4A37A00F2E454 /* _laba_5__iosUITests.swift */; };
 		A06F4C101EE4A89A00F2E454 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4C0F1EE4A89A00F2E454 /* TableViewCell.swift */; };
-		A06F4C121EE4D45600F2E454 /* Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4C111EE4D45600F2E454 /* Func.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		A06F4C011EE4A37A00F2E454 /* _laba_5__iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _laba_5__iosUITests.swift; sourceTree = "<group>"; };
 		A06F4C031EE4A37A00F2E454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A06F4C0F1EE4A89A00F2E454 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
-		A06F4C111EE4D45600F2E454 /* Func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Func.swift; path = ../Func.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +104,6 @@
 				A06F4BDE1EE4A37900F2E454 /* AppDelegate.swift */,
 				A06F4BE01EE4A37900F2E454 /* ViewController.swift */,
 				A06F4C0F1EE4A89A00F2E454 /* TableViewCell.swift */,
-				A06F4C111EE4D45600F2E454 /* Func.swift */,
 				A06F4BE21EE4A37900F2E454 /* Main.storyboard */,
 				A06F4BE81EE4A37900F2E454 /* Assets.xcassets */,
 				A06F4BEA1EE4A37900F2E454 /* LaunchScreen.storyboard */,
@@ -273,7 +270,6 @@
 				A06F4C101EE4A89A00F2E454 /* TableViewCell.swift in Sources */,
 				A06F4BDF1EE4A37900F2E454 /* AppDelegate.swift in Sources */,
 				A06F4BE71EE4A37900F2E454 /* _laba_5__ios.xcdatamodeld in Sources */,
-				A06F4C121EE4D45600F2E454 /* Func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,13 +11,13 @@ import CoreData
 
 @available(iOS 10.0, *)
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITabBarDelegate {
-
+    
     var busStation = [BusStation]()
     var managedObjectContext : NSManagedObjectContext!
     var hasSearched = false
     var searchedArray = [BusStation]()
     
-
+    
     @IBOutlet weak var consoleLabel: UILabel!
     @IBOutlet weak var switchController: UISwitch!
     @IBOutlet weak var tableView: UITableView!
@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     // MARK: - CoreData
-
+    
     func loadData(choice will: Int){
         let presentRequest:NSFetchRequest<BusStation> = BusStation.fetchRequest()
         
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let sort = NSSortDescriptor(key: "departureTime", ascending: true)
             presentRequest.sortDescriptors = [sort]
-
+            
         case 2:
             break
         case 3:
@@ -90,22 +90,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-//    func loadSortedData() {
-//        
-//        let request:NSFetchRequest<BusStation> = BusStation.fetchRequest()
-//        let sort = NSSortDescriptor(key: "destinationTime", ascending: false)
-//        request.sortDescriptors = [sort]
-//        
-//        do {
-//            busStation = try managedObjectContext.fetch(request)
-//            print("Got \(busStation.count) commits")
-//            tableView.reloadData()
-//        } catch {
-//            print("Fetch failed")
-//        }
-//    }
-
-
+    //    func loadSortedData() {
+    //
+    //        let request:NSFetchRequest<BusStation> = BusStation.fetchRequest()
+    //        let sort = NSSortDescriptor(key: "destinationTime", ascending: false)
+    //        request.sortDescriptors = [sort]
+    //
+    //        do {
+    //            busStation = try managedObjectContext.fetch(request)
+    //            print("Got \(busStation.count) commits")
+    //            tableView.reloadData()
+    //        } catch {
+    //            print("Fetch failed")
+    //        }
+    //    }
+    
+    
     // MARK: - TableView
     
     
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             return searchedArray.count
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,13 +131,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             busStationItem = busStation[indexPath.row]
             
         } else{
-            hasSearched = false
+            //hasSearched = false
             busStationItem = searchedArray[indexPath.row]
             
         }
         
         //cell.numberOfBusLabel.text = String(numbers[indexPath.row])
-
+        
         cell.numberOfBusLabel.text = busStationItem.busNumber
         cell.departureLabel.text = busStationItem.departure
         cell.destinationLabel.text = busStationItem.destination
@@ -154,7 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editingStyle == .delete {
             
             managedObjectContext.delete(busStation[indexPath.row])
-
+            
             busStation.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
@@ -241,15 +241,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         tableView.reloadData()
-
+        
         
     }
-
+    
     
     @IBAction func taskAction(_ sender: UIButton) {
         
-        if sender.backgroundColor == UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1){
-            sender.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+        if hasSearched{
+            sender.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 132/255, blue: 0/255, alpha: 1)
+            sender.setTitle("Task", for: .normal)
+
+            hasSearched = false
+            tableView.reloadData()
+        }else {
+            sender.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 0/255, blue: 0/255, alpha: 1)
             sender.setTitle("Cancel", for: .normal)
             
             let inputAlert = UIAlertController(title: "Your attention please", message: "Insert destination..", preferredStyle: .alert)
@@ -261,6 +267,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             inputAlert.addAction(UIAlertAction(title: "Search", style: .default, handler: { action in
                 if inputAlert.textFields?.first?.text != "" {
                     self.showNewTableView(with: (inputAlert.textFields?.first?.text)!)
+                    if !self.hasSearched{
+                        sender.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 132/255, blue: 0/255, alpha: 1)
+                        sender.setTitle("Task", for: .normal)
+                    }
                     print("It's here!")
                 }
             }))
@@ -269,15 +279,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             self.present(inputAlert, animated: true, completion: nil)
             
-        }else {
-            sender.backgroundColor = UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1)
-            sender.setTitle("Task", for: .normal)
-            
-            hasSearched = false
-            tableView.reloadData()
         }
-        
-        
         
         
         
@@ -305,7 +307,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !searched{
             showCustomAlert(with: "There is no this element!")
         } else{
-        
+            
             for first in searchedArray{
                 for second in searchedArray{
                     if first.destinationTime! < second.destinationTime!{
@@ -320,8 +322,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
-        
-        
     }
     
     func showCustomAlert(with text: String){
@@ -330,23 +330,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         customAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(customAlert, animated: true, completion: nil)
-    }
-    
-    func changeButton(button : UIButton){
-        
-        if button.backgroundColor == UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1){
-            
-            button.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
-            button.titleLabel?.text = "Cancel"
-            hasSearched = false
-            
-        } else{
-            
-            button.backgroundColor = UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1)
-            button.titleLabel?.text = "Task"
-            
-        }
-        
     }
     
 }
