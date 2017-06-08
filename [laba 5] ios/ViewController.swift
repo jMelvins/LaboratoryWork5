@@ -246,24 +246,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     
-    @IBAction func taskAction(_ sender: Any) {
+    @IBAction func taskAction(_ sender: UIButton) {
         
-        let inputAlert = UIAlertController(title: "Your attention please", message: "Insert destination..", preferredStyle: .alert)
-        inputAlert.addTextField { (textField:UITextField) in
-            textField.placeholder = "Destination:"
+        if sender.backgroundColor == UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1){
+            sender.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+            sender.setTitle("Cancel", for: .normal)
+            
+            let inputAlert = UIAlertController(title: "Your attention please", message: "Insert destination..", preferredStyle: .alert)
+            inputAlert.addTextField { (textField:UITextField) in
+                textField.placeholder = "Destination:"
+            }
+            
+            
+            inputAlert.addAction(UIAlertAction(title: "Search", style: .default, handler: { action in
+                if inputAlert.textFields?.first?.text != "" {
+                    self.showNewTableView(with: (inputAlert.textFields?.first?.text)!)
+                    print("It's here!")
+                }
+            }))
+            
+            
+            
+            self.present(inputAlert, animated: true, completion: nil)
+            
+        }else {
+            sender.backgroundColor = UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1)
+            sender.setTitle("Task", for: .normal)
+            
+            hasSearched = false
+            tableView.reloadData()
         }
         
         
-        inputAlert.addAction(UIAlertAction(title: "Search", style: .default, handler: { action in
-            if inputAlert.textFields?.first?.text != "" {
-                self.showNewTableView(with: (inputAlert.textFields?.first?.text)!)
-                print("It's here!")
-            }
-        }))
         
         
-        
-        self.present(inputAlert, animated: true, completion: nil)
         
     }
     
@@ -304,6 +320,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
+        
+        
     }
     
     func showCustomAlert(with text: String){
@@ -312,6 +330,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         customAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(customAlert, animated: true, completion: nil)
+    }
+    
+    func changeButton(button : UIButton){
+        
+        if button.backgroundColor == UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1){
+            
+            button.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+            button.titleLabel?.text = "Cancel"
+            hasSearched = false
+            
+        } else{
+            
+            button.backgroundColor = UIColor(red: 255/255, green: 132/255, blue: 0/255, alpha: 1)
+            button.titleLabel?.text = "Task"
+            
+        }
+        
     }
     
 }
