@@ -15,6 +15,8 @@
 		A06F4BEC1EE4A37900F2E454 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06F4BEA1EE4A37900F2E454 /* LaunchScreen.storyboard */; };
 		A06F4BF71EE4A37A00F2E454 /* _laba_5__iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4BF61EE4A37A00F2E454 /* _laba_5__iosTests.swift */; };
 		A06F4C021EE4A37A00F2E454 /* _laba_5__iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4C011EE4A37A00F2E454 /* _laba_5__iosUITests.swift */; };
+		A06F4C101EE4A89A00F2E454 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4C0F1EE4A89A00F2E454 /* TableViewCell.swift */; };
+		A06F4C121EE4D45600F2E454 /* Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F4C111EE4D45600F2E454 /* Func.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		A06F4BFD1EE4A37A00F2E454 /* [laba 5] iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "[laba 5] iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06F4C011EE4A37A00F2E454 /* _laba_5__iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _laba_5__iosUITests.swift; sourceTree = "<group>"; };
 		A06F4C031EE4A37A00F2E454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A06F4C0F1EE4A89A00F2E454 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
+		A06F4C111EE4D45600F2E454 /* Func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Func.swift; path = ../Func.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			children = (
 				A06F4BDE1EE4A37900F2E454 /* AppDelegate.swift */,
 				A06F4BE01EE4A37900F2E454 /* ViewController.swift */,
+				A06F4C0F1EE4A89A00F2E454 /* TableViewCell.swift */,
+				A06F4C111EE4D45600F2E454 /* Func.swift */,
 				A06F4BE21EE4A37900F2E454 /* Main.storyboard */,
 				A06F4BE81EE4A37900F2E454 /* Assets.xcassets */,
 				A06F4BEA1EE4A37900F2E454 /* LaunchScreen.storyboard */,
@@ -196,6 +202,7 @@
 				TargetAttributes = {
 					A06F4BDA1EE4A37900F2E454 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 5YVMX8TY6Q;
 						ProvisioningStyle = Automatic;
 					};
 					A06F4BF11EE4A37A00F2E454 = {
@@ -263,8 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06F4BE11EE4A37900F2E454 /* ViewController.swift in Sources */,
+				A06F4C101EE4A89A00F2E454 /* TableViewCell.swift in Sources */,
 				A06F4BDF1EE4A37900F2E454 /* AppDelegate.swift in Sources */,
 				A06F4BE71EE4A37900F2E454 /* _laba_5__ios.xcdatamodeld in Sources */,
+				A06F4C121EE4D45600F2E454 /* Func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +425,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5YVMX8TY6Q;
 				INFOPLIST_FILE = "[laba 5] ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VladShilov.-laba-5--ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,7 +439,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5YVMX8TY6Q;
 				INFOPLIST_FILE = "[laba 5] ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VladShilov.-laba-5--ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,6 +522,7 @@
 				A06F4C081EE4A37A00F2E454 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A06F4C091EE4A37A00F2E454 /* Build configuration list for PBXNativeTarget "[laba 5] iosTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +531,7 @@
 				A06F4C0B1EE4A37A00F2E454 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A06F4C0C1EE4A37A00F2E454 /* Build configuration list for PBXNativeTarget "[laba 5] iosUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +540,7 @@
 				A06F4C0E1EE4A37A00F2E454 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
